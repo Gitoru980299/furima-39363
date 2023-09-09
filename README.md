@@ -59,7 +59,7 @@
 | ------------------ | ---------- | ------------------------------ |
 | address            | string     | null: false                    |
 | post_code          | string     | null: false                    |
-| prefecture         | string     | null: false                    |
+| prefecture_id      | integer    | null: false                    |
 | city_address       | string     | null: false                    |
 | street_address     | string     | null: false                    |
 | building_name      | string     |                                |
