@@ -10,7 +10,7 @@
 | first_name_kana    | string   | null: false               |
 | last_name          | string   | null: false               |
 | last_name_kana     | string   | null: false               |
-| nickname           | text     | null: false               |
+| nickname           | string   | null: false               |
 | birthday           | date     | null: false               |
 
 ###Association
@@ -27,14 +27,14 @@
 | item_name          | string     | null: false                    |
 | explanation        | text       | null: false                    |
 | delivery_charge_id | integer    | null: false                    |
-| sender_area_id     | integer    | null: false                    |
+| prefecture_id      | integer    | null: false                    |
 | days_to_ship_id    | integer    | null: false                    |
 | price              | integer    | null: false                    |
 | user               | references | null: false, foreign_key: true |
 
 ###Association
 
-- has_one :purchased_items
+- has_one :purchased_item
 - belongs_to :user
 
 
@@ -57,13 +57,14 @@
 
 | Column             | Type       | Options                        |
 | ------------------ | ---------- | ------------------------------ |
-| address            | text       | null: false                    |
+| address            | string     | null: false                    |
 | post_code          | string     | null: false                    |
 | prefecture         | string     | null: false                    |
 | city_address       | string     | null: false                    |
 | street_address     | string     | null: false                    |
 | building_name      | string     |                                |
 | telephone_number   | string     | null: false                    |
+| purchased_item     | references | null: false, foreign_key: true |
 
 
 ###Association
