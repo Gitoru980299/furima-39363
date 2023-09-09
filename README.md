@@ -6,9 +6,12 @@
 | ------------------ | -------- | ------------------------- |
 | email              | string   | null: false, unique: true |
 | encrypted_password | string   | null: false               |
-| name               | string   | null: false               |
+| first_name         | string   | null: false               |
+| first_name_kana    | string   | null: false               |
+| last_name          | string   | null: false               |
+| last_name_kana     | string   | null: false               |
 | nickname           | text     | null: false               |
-| birthday           | text     | null: false               |
+| birthday           | date     | null: false               |
 
 ###Association
 
@@ -19,40 +22,35 @@
 
 | Column             | Type       | Options                        |
 | ------------------ | ---------- | ------------------------------ |
-| category           | string     | null: false                    |
-| status             | string     | null: false                    |
-| image              | text       | null: false                    |
-| item_name          | text       | null: false                    |
+| category_id        | integer    | null: false                    |
+| status_id          | integer    | null: false                    |
+| item_name          | string     | null: false                    |
 | explanation        | text       | null: false                    |
-| delivery_charge    | integer    | null: false                    |
-| sender_area        | string     | null: false                    |
-| days_to_ship       | integer    | null: false                    |
+| delivery_charge_id | integer    | null: false                    |
+| sender_area_id     | integer    | null: false                    |
+| days_to_ship_id    | integer    | null: false                    |
 | price              | integer    | null: false                    |
 | user               | references | null: false, foreign_key: true |
 
 ###Association
 
-- belongs_to :purchased_items
-- belongs_to :users
+- has_one :purchased_items
+- belongs_to :user
 
 
 ##purchased_itemsテーブル
 
 | Column             | Type       | Options                        |
 | ------------------ | ---------- | ------------------------------ |
-| image              | text       | null: false                    |
-| item_name          | text       | null: false                    |
-| delivery_charge    | integer    | null: false                    |
-| price              | integer    | null: false                    |
 | user               | references | null: false, foreign_key: true |
 | item               | references | null: false, foreign_key: true |
 
 
 ###Association
 
-- belongs_to :users
-- belongs_to :items
-- has_one : shipping_items
+- belongs_to :user
+- belongs_to :item
+- has_one : shipping_item
 
 
 ##shipping_itemsテーブル
@@ -60,16 +58,14 @@
 | Column             | Type       | Options                        |
 | ------------------ | ---------- | ------------------------------ |
 | address            | text       | null: false                    |
-| post_code          | integer    | null: false                    |
-| prefecture         | text       | null: false                    |
-| city_address       | text       | null: false                    |
-| street_address     | text       | null: false                    |
-| building_name      | text       | null: false                    |
-| telephone_number   | integer    | null: false                    |
-| user               | references | null: false, foreign_key: true |
-| item               | references | null: false, foreign_key: true |
+| post_code          | string     | null: false                    |
+| prefecture         | string     | null: false                    |
+| city_address       | string     | null: false                    |
+| street_address     | string     | null: false                    |
+| building_name      | string     |                                |
+| telephone_number   | string     | null: false                    |
 
 
 ###Association
 
-- belongs_to :purchased_items
+- belongs_to :purchased_item
