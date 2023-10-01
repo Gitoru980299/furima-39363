@@ -1,6 +1,6 @@
 class PurchaseShipping
   include ActiveModel::Model
-  attr_accessor :post_code, :prefecture_id, :city_address, :street_address, :building_name, :telephone_number, :purchase_item, :item_id, :user_id
+  attr_accessor :post_code, :prefecture_id, :city_address, :street_address, :building_name, :telephone_number, :purchase_item, :item_id, :user_id, :token
 
   with_options presence: true do
     validates :user_id
@@ -10,7 +10,7 @@ class PurchaseShipping
     validates :city_address
     validates :street_address
     validates :telephone_number, format: { with: /\A\d{10,11}\z/, message: 'must be 10 digits or 11 digits number' }
-    #validates :token
+    validates :token
     
   end
   
